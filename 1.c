@@ -1,15 +1,13 @@
 #include <stdio.h>
 
 int main() {
-	float len, width = 0;
-	float area, peri =0;
+	int a, b, c, d;
+	
+	printf("input 2 integers = ");
+	c = scanf_s("%d %d",&a,&b);
+	d = printf("'a' = %d, 'b' = %d, 'c' = %d\n", a, b, c);
 
-	printf("Enter the len and width : ");
-	scanf_s("%f %f", &len, &width);
-	area = len * width;
-	peri = 2 * len + 2 * width;
-
-	printf(" % f, % f\n", area, peri);
+	printf("d = %d", d);
 
 	return 0;
 }

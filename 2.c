@@ -1,18 +1,20 @@
 #include <stdio.h>
-#define PI 3.14159;
 
-int main()
-{
-	float radius, diameter, circumference, area;
-	
-	printf("Get radius? ");
-	scanf_s("%f", &radius);
-	
-	diameter = radius * 2;
-	circumference = 2 * radius * PI;
-	area = radius * radius * PI
-	
-	printf("diameter = %f, circumference = %f, area = %f", diameter, circumference, area);
-	
-	return 0;
+int main() {
+    float meter, inch;
+    int feet;
+
+    printf("    meters\r");
+    scanf_s("%f", &meter);
+
+    // meter->feet
+    float feetFloat = meter * 3.2808;
+    feet = (int)feetFloat; 
+
+    //feet->inches
+    inch = (feetFloat - feet) * 12;
+
+    printf("-> %dfeet(s) %.1finch(es)\n", feet, inch);
+
+    return 0;
 }

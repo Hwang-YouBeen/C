@@ -1,19 +1,42 @@
 #include <stdio.h>
-int main(void)
-{	
-	char g;
-	float ma, ca, fc, fs = 0;
-	printf("Enter desired grade>");
-	scanf_s("%c", &g);
-	printf("Enter minimum average required>");
-	scanf_s("%f", &ma);
-	printf("Enter current average in course>");
-	scanf_s("%f", &ca);
-	printf("Enter how much the final counts as a percentage\nof the course grade>");
-	scanf_s("%f", &fc);
-	
-	fs = (79.5 - 74.6 * 0.75) / 0.25;
 
-	printf("You need a score of %.2f on the final to get a %c", fs, g);
-	return 0;
+int main() {
+    int day, hour, minute, second;
+
+    printf("day: ");
+    scanf_s("%d", &day);
+    printf("hour: ");
+    scanf_s("%d", &hour);
+    printf("minute: ");
+    scanf_s("%d", &minute);
+    printf("second: ");
+    scanf_s("%d", &second);
+
+    printf("==========result=========\n");
+
+    // 입력값을 초로 환산
+    int totalsec = day * 24 * 60 * 60 + hour * 60 * 60 + minute * 60 + second;
+
+    // 일, 시간, 분, 초로 계산
+    int days = totalsec / (24 * 60 * 60);
+    int remainsec = totalsec % (24 * 60 * 60);
+    int hours = remainsec / (60 * 60);
+    remainsec %= (60 * 60);
+    int minutes = remainsec / 60;
+    int seconds = remainsec % 60;
+
+    //day-minute-second
+    printf("%d day(s) %d hour(s) %d minute(s) %d second(s)\n", days, hours, minutes, seconds);
+
+    // hour-minute-second
+    int totalmin = (day * 24 * 60) + (hour * 60) + minute;
+    printf("%d hour(s) %d minute(s) %d second(s)\n", totalmin / 60, totalmin % 60 + second / 60, second % 60);
+
+    // minute-second
+    printf("%d minute(s) %d second(s)\n", totalsec/60, totalsec % 60);
+
+    // second
+    printf("%d second(s)\n", totalsec);
+
+    return 0;
 }

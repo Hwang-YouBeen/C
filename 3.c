@@ -1,12 +1,17 @@
 #include <stdio.h>
-int main(void)
-{
-	float F, C =0;
+#define VAT 0.1
+#define FEE 0.06
+int main() {
+	float price, cash_price, card_price;
 
-	scanf_s("%f", &F);
-	C = 5.0 / 9.0 * (F - 32);
-	
-	printf("%f", C);
+	printf("Input the Price : ");
+	scanf_s("%f", &price);
 
-	return 0;
+	cash_price = price + price * VAT;
+	card_price = cash_price + cash_price * FEE;
+
+	printf("You can pay cash or credit card.");
+	printf("\nIf you want to pay credit card, CREDIT FEE is %.2f * %.2f.", price, FEE);
+	printf("\nThe VAT on %.2f is %.2f", price, price*VAT);
+	printf("\nCash : %.2f\nCredit Card : %.2f", cash_price, card_price);
 }
