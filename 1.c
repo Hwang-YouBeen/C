@@ -1,13 +1,18 @@
 #include <stdio.h>
+void main() {
+	int a, b;
+	printf("두 개의 정수를 입력하고 Enter>");
+	scanf_s("%d %d", &a, &b);
 
-int main() {
-	int a, b, c, d;
-	
-	printf("input 2 integers = ");
-	c = scanf_s("%d %d",&a,&b);
-	d = printf("'a' = %d, 'b' = %d, 'c' = %d\n", a, b, c);
+	if (a > b) {
+		printf("변수 %d가 큽니다.", a);
+	}
 
-	printf("d = %d", d);
+	else if (a < b) {
+		printf("변수 %d가 큽니다.", b);
+	}
 
-	return 0;
+	else {
+		printf("같은 값을 입력했습니다.");
+	}
 }

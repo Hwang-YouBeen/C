@@ -1,17 +1,17 @@
 #include <stdio.h>
-#define VAT 0.1
-#define FEE 0.06
-int main() {
-	float price, cash_price, card_price;
+void main() {
+	double n, i, j;
+	double sum=0;
+	printf("1부터 n까지의 n!계산\n");
+	printf("정수 n 입력 : ");
+	scanf_s("%lf", &n);
 
-	printf("Input the Price : ");
-	scanf_s("%f", &price);
-
-	cash_price = price + price * VAT;
-	card_price = cash_price + cash_price * FEE;
-
-	printf("You can pay cash or credit card.");
-	printf("\nIf you want to pay credit card, CREDIT FEE is %.2f * %.2f.", price, FEE);
-	printf("\nThe VAT on %.2f is %.2f", price, price*VAT);
-	printf("\nCash : %.2f\nCredit Card : %.2f", cash_price, card_price);
+	for (i = 1; i <= n; i++) {
+		sum = 1;
+		for (j = 2; j <= i; j++) {
+			sum *= j;
+		}
+		printf("%2.lf!=%13.lf\n",i, sum);
+	}
+	return 0;
 }

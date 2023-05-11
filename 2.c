@@ -1,20 +1,16 @@
 #include <stdio.h>
+void main() {
+	int n, i, j;
+	int sum=0;
+	printf("1부터 n까지의 덧셈계산\n");
+	printf("정수 n 입력 : ");
+	scanf_s("%d", &n);
 
-int main() {
-    float meter, inch;
-    int feet;
-
-    printf("    meters\r");
-    scanf_s("%f", &meter);
-
-    // meter->feet
-    float feetFloat = meter * 3.2808;
-    feet = (int)feetFloat; 
-
-    //feet->inches
-    inch = (feetFloat - feet) * 12;
-
-    printf("-> %dfeet(s) %.1finch(es)\n", feet, inch);
-
-    return 0;
+	for (i = 1; i <= n; i ++) {
+		for (j = 1; j <= i; j++) {
+			sum += 1;
+		}
+		printf("1부터 %d까지의 합= %d\n", i, sum);
+	}
+	return 0;
 }
