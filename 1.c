@@ -1,18 +1,18 @@
 #include <stdio.h>
-void main() {
-	int a, b;
-	printf("두 개의 정수를 입력하고 Enter>");
-	scanf_s("%d %d", &a, &b);
 
-	if (a > b) {
-		printf("변수 %d가 큽니다.", a);
-	}
+int main() {
+    int decimal, octal = 0, i = 1;
 
-	else if (a < b) {
-		printf("변수 %d가 큽니다.", b);
-	}
+    printf("Input one integer number: ");
+    scanf_s("%d", &decimal);
 
-	else {
-		printf("같은 값을 입력했습니다.");
-	}
+    while (decimal != 0) {
+        octal += (decimal % 8) * i;
+        decimal /= 8;
+        i *= 10;
+    }
+
+    printf("Output octal number: %d\n", octal);
+
+    return 0;
 }

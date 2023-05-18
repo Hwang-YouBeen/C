@@ -1,17 +1,25 @@
 #include <stdio.h>
-void main() {
-	double n, i, j;
-	double sum=0;
-	printf("1부터 n까지의 n!계산\n");
-	printf("정수 n 입력 : ");
-	scanf_s("%lf", &n);
 
-	for (i = 1; i <= n; i++) {
-		sum = 1;
-		for (j = 2; j <= i; j++) {
-			sum *= j;
-		}
-		printf("%2.lf!=%13.lf\n",i, sum);
-	}
-	return 0;
+int integerPower(int base, int exponent);
+
+int main() {
+    int b, e;
+
+    printf("Input base and exponent: ");
+    scanf_s("%d %d", &b, &e); // 밑과 지수 입력받기
+
+    int result = integerPower(b, e);
+    printf("%d^%d = %d\n", b, e, result);
+
+    return 0;
+}
+
+int integerPower(int base, int exponent) {
+    int result = 1;
+
+    for (int i = 0; i < exponent; i++) {
+        result *= base;
+    }
+
+    return result;
 }
