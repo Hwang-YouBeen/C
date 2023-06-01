@@ -1,18 +1,28 @@
 #include <stdio.h>
+void triangle(int line);
 
 int main() {
-    int decimal, octal = 0, i = 1;
-
-    printf("Input one integer number: ");
-    scanf_s("%d", &decimal);
-
-    while (decimal != 0) {
-        octal += (decimal % 8) * i;
-        decimal /= 8;
-        i *= 10;
-    }
-
-    printf("Output octal number: %d\n", octal);
-
+    int a;
+    printf("input line : ");
+    scanf_s("%d", &a);
+    triangle(a);
     return 0;
+}
+
+void triangle(int line) {
+    int i, j, count = 1;
+    int space = line - 1; //ºóÄ­
+
+    for (i = 1; i <= line; i++) {
+        for (j = 1; j <= space; j++) {
+            printf("  ");
+        }
+
+        for (j = 1; j <= i; j++) {
+            printf("%-2d ", count++);
+        }
+
+        printf("\n");
+        space--;
+    }
 }

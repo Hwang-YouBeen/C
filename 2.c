@@ -1,29 +1,36 @@
 #include <stdio.h>
+//피보나치
+int Rpairs(int month);
 
-int geometric(int n);
+int main() {
+    int N;
 
-int main(void) {
-    printf("sum = %d\n\n", geometric(10));
+    printf("input 'N'-month : ");
+    scanf_s("%d", &N);
+
+    int pairs = Rpairs(N);
+
+    printf("Number of rabbit pairs in N-month: %d\n", pairs);
+
     return 0;
 }
 
-int geometric(int n) {
-    int firstTerm = 2;  
-    int ratio = 3;
-    int term, sum = 0;
-
-    for (int i = 0; i < n; i++) {
-        term = firstTerm;
-
-        for (int j = 0; j < i; j++) {
-            term *= ratio;
-        }
-
-        printf("an=%d\n", term);
-        sum += term;
+int Rpairs(int month) {
+    if (month == 1 || month == 2) {
+        return 1;
     }
 
-    printf("\n");
+    int currmonth = 2; 
+    int prepairs = 1;  
+    int currpairs = 1; 
 
-    return sum;
+    while (currmonth < month) {
+        int newPairs = prepairs;  
+        prepairs = currpairs;
+        currpairs += newPairs;
+
+        currmonth++;
+    }
+
+    return currpairs;
 }

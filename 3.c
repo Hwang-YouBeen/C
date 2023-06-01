@@ -1,25 +1,48 @@
-#include <stdio.h>
+#include<stdio.h>
+#include<math.h>
 
-int integerPower(int base, int exponent);
+int fact(int n);
+double compute_e();
+double compute_ex(double x);
 
 int main() {
-    int b, e;
+    int a;
+    double x;
 
-    printf("Input base and exponent: ");
-    scanf_s("%d %d", &b, &e); // 밑과 지수 입력받기
+    printf("a! = ? Enter a: ");
+    scanf_s("%d", &a);
 
-    int result = integerPower(b, e);
-    printf("%d^%d = %d\n", b, e, result);
+    printf("e^x = ? Enter x: ");
+    scanf_s("%lf", &x);
+
+    printf("\na! = %d\n", fact(a));
+    printf("e = %lf\n", compute_e());
+    printf("e^%.lf = %lf\n", x, compute_ex(x));
 
     return 0;
 }
 
-int integerPower(int base, int exponent) {
-    int result = 1;
+int fact(int n) {
+    if (n == 0)
+        return 1;
+    else
+        return n * fact(n - 1);
+}
 
-    for (int i = 0; i < exponent; i++) {
-        result *= base;
+double compute_e() {
+    double e = 1.0;
+    int i;
+    for (i = 1; i <= 8; i++) {
+        e += 1.0 / fact(i);
     }
+    return e;
+}
 
-    return result;
+double compute_ex(double x) {
+    double ex = 1.0;
+    int i;
+    for (i = 1; i <= 8; i++) {
+        ex += pow(x, i) / fact(i); //pow -> x의 i승 계산
+    }
+    return ex;
 }
