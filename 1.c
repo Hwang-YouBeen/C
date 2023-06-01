@@ -1,28 +1,12 @@
 #include <stdio.h>
-void triangle(int line);
 
-int main() {
-    int a;
-    printf("input line : ");
-    scanf_s("%d", &a);
-    triangle(a);
-    return 0;
-}
+void main() {
+    int m = 100, n = 200, dummy;
+    int* p = &m;
 
-void triangle(int line) {
-    int i, j, count = 1;
-    int space = line - 1; //빈칸
+    dummy = *p; //dummy에 *p값 저장
+    *p = *(&n); // *p에는 *(&n)값 저장
+    *(&n) = dummy; //*(&n)에는 dummy값 저장
 
-    for (i = 1; i <= line; i++) {
-        for (j = 1; j <= space; j++) {
-            printf("  ");
-        }
-
-        for (j = 1; j <= i; j++) {
-            printf("%-2d ", count++);
-        }
-
-        printf("\n");
-        space--;
-    }
+    printf("%d %d\n", m, n);
 }

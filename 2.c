@@ -1,36 +1,36 @@
 #include <stdio.h>
-//피보나치
-int Rpairs(int month);
+#include <stdlib.h>
 
-int main() {
-    int N;
-
-    printf("input 'N'-month : ");
-    scanf_s("%d", &N);
-
-    int pairs = Rpairs(N);
-
-    printf("Number of rabbit pairs in N-month: %d\n", pairs);
-
-    return 0;
+void clearb() { //입력버퍼 초기화
+    while (getchar() != '\n');
 }
 
-int Rpairs(int month) {
-    if (month == 1 || month == 2) {
-        return 1;
-    }
+void wait() {
+    printf("Press any key to continue...");
+    getchar(); //사용자로부터 키 입력받음.
+    clearb(); // 입력 버퍼 초기화
+}
 
-    int currmonth = 2; 
-    int prepairs = 1;  
-    int currpairs = 1; 
+int main() {
+    double x, y;
+    double* px = &x;
+    double* py = &y;
 
-    while (currmonth < month) {
-        int newPairs = prepairs;  
-        prepairs = currpairs;
-        currpairs += newPairs;
+    do {
+        printf("실수 x, y 입력: ");
+        scanf_s("%lf %lf", px, py);
+        clearb();
 
-        currmonth++;
-    }
+        printf(" x = %.2lf, y = %.2lf, x + y = %.2lf\n", x, y, x + y);
 
-    return currpairs;
+        *px = *px + *py;
+        *py = *px - *py;
+        *px = *px - *py;
+
+        printf("x와 y 값 교환: x = %lf, y = %lf\n", x, y);
+
+        wait();
+    } while (1);
+
+    return 0;
 }

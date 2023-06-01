@@ -1,48 +1,37 @@
-#include<stdio.h>
-#include<math.h>
+#include <stdio.h>
+#include <stdlib.h>
 
-int fact(int n);
-double compute_e();
-double compute_ex(double x);
+int tosscoin()
+{
+    return rand() % 2;
+}
 
-int main() {
-    int a;
-    double x;
+#include <time.h>
 
-    printf("a! = ? Enter a: ");
-    scanf_s("%d", &a);
+int main(void){
+    int i;
+    int headcount = 0; //앞면 카운트 초기화
+    int tailcount = 0; //뒷면 카운트 초기화
 
-    printf("e^x = ? Enter x: ");
-    scanf_s("%lf", &x);
+    srand((unsigned)time(NULL)); // 현재시간으로 난수 생성기를 초기화
 
-    printf("\na! = %d\n", fact(a));
-    printf("e = %lf\n", compute_e());
-    printf("e^%.lf = %lf\n", x, compute_ex(x));
+    for (i = 0; i < 100; i++)
+    {
+        int result = tosscoin();
+        if (result == 0)//뒷면이면
+        {
+            printf("Tails\n");
+            tailcount++;//뒷면 카운트+
+        }
+        else // 앞면이면
+        {
+            printf("Heads\n");
+            headcount++; //앞면 카운트+
+        }
+    }
+
+    printf("Heads count: %d\n", headcount);
+    printf("Tails count: %d\n", tailcount);
 
     return 0;
-}
-
-int fact(int n) {
-    if (n == 0)
-        return 1;
-    else
-        return n * fact(n - 1);
-}
-
-double compute_e() {
-    double e = 1.0;
-    int i;
-    for (i = 1; i <= 8; i++) {
-        e += 1.0 / fact(i);
-    }
-    return e;
-}
-
-double compute_ex(double x) {
-    double ex = 1.0;
-    int i;
-    for (i = 1; i <= 8; i++) {
-        ex += pow(x, i) / fact(i); //pow -> x의 i승 계산
-    }
-    return ex;
 }
