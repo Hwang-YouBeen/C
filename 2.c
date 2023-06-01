@@ -1,36 +1,33 @@
+버블정렬
 #include <stdio.h>
-#include <stdlib.h>
+#define N 10
 
-void clearb() { //입력버퍼 초기화
-    while (getchar() != '\n');
-}
-
-void wait() {
-    printf("Press any key to continue...");
-    getchar(); //사용자로부터 키 입력받음.
-    clearb(); // 입력 버퍼 초기화
+void selectionSort(int A[], int size) {
+    int i, key, j;
+    for (i = 1; i < size; i++) {
+        key = A[i];
+        j = i - 1;
+        while (j >= 0 && A[j] > key) { // a[]에서 key 보다 큰 것들을 오른쪽으로 한칸씩 옮김
+            A[j + 1] = A[j];
+            j = j - 1;
+        }
+        A[j + 1] = key;
+    }
 }
 
 int main() {
-    double x, y;
-    double* px = &x;
-    double* py = &y;
+    int i;
+    int a[N];
 
-    do {
-        printf("실수 x, y 입력: ");
-        scanf_s("%lf %lf", px, py);
-        clearb();
+    printf("Enter 10 integers : ");
+    for (i = 0; i < 10; i++) {
+        scanf_s("%d", &a[i]);
+    }
+    selectionSort(a, N);
 
-        printf(" x = %.2lf, y = %.2lf, x + y = %.2lf\n", x, y, x + y);
-
-        *px = *px + *py;
-        *py = *px - *py;
-        *px = *px - *py;
-
-        printf("x와 y 값 교환: x = %lf, y = %lf\n", x, y);
-
-        wait();
-    } while (1);
+    for (i = 0; i < N; i++) {
+        printf("%d\n", a[i]);
+    }
 
     return 0;
 }
